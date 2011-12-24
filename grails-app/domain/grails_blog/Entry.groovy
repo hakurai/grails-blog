@@ -9,6 +9,8 @@ class Entry {
         lastUpdated()
     }
 
+    static belongsTo = [author: User]
+
     static mapping = {
         sort dateCreated: "desc"
     }
