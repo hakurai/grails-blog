@@ -26,5 +26,8 @@
         <g:render template="entry" bean="${entryInstance}" var="entryInstance"></g:render>
     </g:each>
 </div>
+<div class="paginateButtons">
+  <g:paginate total="${entryCount}" params="${flash}"/>
+</div>
 </body>
 </html>
