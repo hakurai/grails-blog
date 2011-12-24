@@ -20,47 +20,9 @@
 </div>
 
 <div id="list-entry" class="content scaffold-list" role="main">
-    <h1><g:message code="default.list.label" args="[entityName]"/></h1>
-    <g:if test="${flash.message}">
-        <div class="message" role="status">${flash.message}</div>
-    </g:if>
-    <table>
-        <thead>
-        <tr>
-
-            <g:sortableColumn property="title" title="${message(code: 'entry.title.label', default: 'Title')}"/>
-
-            <g:sortableColumn property="summary" title="${message(code: 'entry.summary.label', default: 'Summary')}"/>
-
-            <g:sortableColumn property="dateCreated"
-                              title="${message(code: 'entry.dateCreated.label', default: 'Date Created')}"/>
-
-            <g:sortableColumn property="lastUpdated"
-                              title="${message(code: 'entry.lastUpdated.label', default: 'Last Updated')}"/>
-
-        </tr>
-        </thead>
-        <tbody>
-        <g:each in="${entryInstanceList}" status="i" var="entryInstance">
-            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
-                <td><g:link action="show"
-                            id="${entryInstance.id}">${fieldValue(bean: entryInstance, field: "title")}</g:link></td>
-
-                <td>${fieldValue(bean: entryInstance, field: "summary")}</td>
-
-                <td><g:formatDate date="${entryInstance.dateCreated}"/></td>
-
-                <td><g:formatDate date="${entryInstance.lastUpdated}"/></td>
-
-            </tr>
-        </g:each>
-        </tbody>
-    </table>
-
-    <div class="pagination">
-        <g:paginate total="${entryInstanceTotal}"/>
-    </div>
+    <g:each in="${entryInstanceList}" status="i" var="entryInstance">
+        <g:render template="entry" bean="${entryInstance}" var="entryInstance"></g:render>
+    </g:each>
 </div>
 </body>
 </html>
